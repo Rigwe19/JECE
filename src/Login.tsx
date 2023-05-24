@@ -1,7 +1,7 @@
 // import {createPortal} from 'react-dom'
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { IoIosLogIn } from 'react-icons/io';
+import { IoIosCloseCircleOutline, IoIosLogIn } from 'react-icons/io';
 
 type Props = {
     setLoginOpen: Function,
@@ -11,7 +11,12 @@ function Login({ setLoginOpen }: Props) {
     const [form, setForm] = useState({
         username: '',
         password: ''
-    })
+    });
+    const [check, setCheck] = useState({
+        username: '',
+        password: ''
+    });
+    const [error, setError] = useState(false);
     return (
         ReactDOM.createPortal(
             <>
@@ -24,20 +29,38 @@ function Login({ setLoginOpen }: Props) {
                         <div className="modal-content">
                             <div className="form">
                                 <label htmlFor="username">Username:</label>
-                                <input value={form.username} onChange={e=>setForm(pv=>({...pv, 'username': e.target.value}))} type="text" />
+                                <div className="relative">
+                                    <input className={`${error && check.username !== 'jece_admin' ? 'red' : ''}`} value={form.username} onChange={e => setForm(pv => ({ ...pv, 'username': e.target.value }))} type="text" />
+                                    {error && check.username !== 'jece_admin' && <IoIosCloseCircleOutline className="icon-close" />}
+                                </div>
+
                             </div>
                             <div className="form">
                                 <label htmlFor="password">Password:</label>
-                                <input value={form.password} onChange={e=>setForm(pv=>({...pv, 'password': e.target.value}))} type="password" />
+                                <div className="relative">
+                                    <input className={`${error && check.password !== '12345678' ? 'red' : ''}`} value={form.password} onChange={e => setForm(pv => ({ ...pv, 'password': e.target.value }))} type="password" />
+                                    {error && check.password !== '12345678' && <IoIosCloseCircleOutline className="icon-close" />}
+                                </div>
+
                             </div>
+                            <div className='form' style={{ margin: '0 10px' }}>
+                                {error && <>
+                                    <p style={{ fontSize: '12px', color: '#f00' }}>wrong username or password check your username and try again</p>
+                                    <pre>Hint: username: jece_admin <br />
+                                        password: 12345678
+                                    </pre>
+                                </>}
+                            </div>
+
+
                         </div>
                         <div className="modal-footer">
                             <button onClick={() => {
-                                if (form.username === 'jece_admin' && form.password === '1234567890') {
+                                if (form.username === 'jece_admin' && form.password === '12345678') {
                                     setLoginOpen(false);
-                                    alert(JSON.stringify(form, null, 2))
-                                }else{
-                                    alert(JSON.stringify(form, null, 2))
+                                } else {
+                                    setError(true);
+                                    setCheck({...form});
                                 }
                             }
                             } style={{ display: "flex", alignItems: "center" }}>

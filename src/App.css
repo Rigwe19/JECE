@@ -457,7 +457,8 @@ select * {
 }
 
 .form input {
-  width: 60%;
+  width: 100%;
+  margin-bottom: 0;
 }
 .form {
   display: flex;
@@ -466,6 +467,23 @@ select * {
 }
 .blur {
   filter: blur(20);
+}
+
+.red {
+  border-color: red !important;
+}
+
+.relative {
+  position: relative;
+  width: 60%;
+}
+
+.icon-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  font-size: 24px;
 }
 
 :root {
