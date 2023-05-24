@@ -28,24 +28,24 @@ function Login({ setLoginOpen }: Props) {
                         </div>
                         <div className="modal-content">
                             <div className="form">
-                                <label htmlFor="username">Username:</label>
+                                {/* <label htmlFor="username">Username:</label> */}
                                 <div className="relative">
-                                    <input className={`${error && check.username !== 'jece_admin' ? 'red' : ''}`} value={form.username} onChange={e => setForm(pv => ({ ...pv, 'username': e.target.value }))} type="text" />
+                                    <input placeholder='username' className={`${error && check.username !== 'jece_admin' ? 'red' : ''}`} value={form.username} onChange={e => setForm(pv => ({ ...pv, 'username': e.target.value }))} type="text" />
                                     {error && check.username !== 'jece_admin' && <IoIosCloseCircleOutline className="icon-close" />}
                                 </div>
 
                             </div>
                             <div className="form">
-                                <label htmlFor="password">Password:</label>
+                                {/* <label htmlFor="password">Password:</label> */}
                                 <div className="relative">
-                                    <input className={`${error && check.password !== '12345678' ? 'red' : ''}`} value={form.password} onChange={e => setForm(pv => ({ ...pv, 'password': e.target.value }))} type="password" />
+                                    <input placeholder='Password' className={`${error && check.password !== '12345678' ? 'red' : ''}`} value={form.password} onChange={e => setForm(pv => ({ ...pv, 'password': e.target.value }))} type="password" />
                                     {error && check.password !== '12345678' && <IoIosCloseCircleOutline className="icon-close" />}
                                 </div>
 
                             </div>
                             <div className='form' style={{ margin: '0 10px' }}>
                                 {error && <>
-                                    <p style={{ fontSize: '12px', color: '#f00' }}>wrong username or password check your username and try again</p>
+                                    <p style={{ fontSize: '12px', color: '#f00' }}>Wrong username or password check your username and try again</p>
                                     <pre>Hint: username: jece_admin <br />
                                         password: 12345678
                                     </pre>
