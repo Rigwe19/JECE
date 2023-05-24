@@ -237,7 +237,7 @@ function App() {
             </fieldset>}
           </div>
         </div>
-        <pre style={{color: 'black'}}>{JSON.stringify(loginOpen, null, 2)}</pre>
+        {/* <pre style={{color: 'black'}}>{JSON.stringify(loginOpen, null, 2)}</pre> */}
       </div>
       <CSSTransition in={modalOpen} unmountOnExit timeout={200} classNames='alert'>
         <Modal setModalOpen={setModalOpen} form={form} ></Modal>

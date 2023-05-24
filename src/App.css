@@ -466,7 +466,7 @@ select * {
   margin: 10px;
 }
 .blur {
-  filter: blur(20);
+  backdrop-filter: blur(2px);
 }
 
 .red {
