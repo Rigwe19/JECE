@@ -4,6 +4,7 @@ import './App.css'
 import { CSSTransition } from 'react-transition-group';
 import { countryListAlpha2 } from './assets/countries';
 import Modal from './Modal';
+import Login from './Login';
 
 interface Form {
   name: string;
@@ -15,6 +16,7 @@ interface Form {
 
 function App() {
   const [step, setStep] = useState<number>(1);
+  const [loginOpen, setLoginOpen] = useState<boolean>(true);
   const [checked, setChecked] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [form, setForm] = useState<Form>({
@@ -235,10 +237,13 @@ function App() {
             </fieldset>}
           </div>
         </div>
-        {/* <pre style={{color: 'black'}}>{JSON.stringify(form, null, 2)}</pre> */}
+        <pre style={{color: 'black'}}>{JSON.stringify(loginOpen, null, 2)}</pre>
       </div>
       <CSSTransition in={modalOpen} unmountOnExit timeout={200} classNames='alert'>
         <Modal setModalOpen={setModalOpen} form={form} ></Modal>
+      </CSSTransition>
+      <CSSTransition in={loginOpen} unmountOnExit timeout={200} classNames='alert'>
+        <Login setLoginOpen={setLoginOpen} ></Login>
       </CSSTransition>
     </>
   )
